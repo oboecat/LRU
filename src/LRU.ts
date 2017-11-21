@@ -12,10 +12,10 @@ export class LRU<Key, Value> {
     this.leastRecent = null;
   }
 
-  set(key: Key, value: Value) {
+  public set(key: Key, value: Value) {
     if (this.map.size === 0) {
       this.mostRecent = {
-        key: key,
+        key,
         data: value,
         prev: null,
         next: null,
@@ -36,7 +36,7 @@ export class LRU<Key, Value> {
     }
   }
 
-  get(key: Key): Value | null {
+  public get(key: Key): Value | null {
     const chosenOne: any = this.map.get(key);
 
     if (!chosenOne) {
@@ -79,7 +79,7 @@ export class LRU<Key, Value> {
     }
 
     const newRecent: INode<Key, Value> = {
-      key: key,
+      key,
       data: value,
       prev: oldRecent,
       next: null,
